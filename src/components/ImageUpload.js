@@ -60,7 +60,7 @@ function ImageUpload() {
         </div>
       )}
       {imgUrl && <img src={imgUrl} alt="uploaded file" height={200} />}
-      <Link to="/">Home</Link>
+      <a href="/">Home</a>
     </div>
   );
 }

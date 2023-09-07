@@ -72,7 +72,7 @@ function Begin() {
       ) : (
         ""
       )}
-      <Link to="/image">Upload Image</Link>
+      <a href="/image">Upload Image</a>
     </div>
   );
 }
