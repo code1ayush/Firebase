@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { storage } from "./firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { Link } from "react-router-dom";
 
 function ImageUpload() {
   const [imgUrl, setImgUrl] = useState(null);
@@ -46,6 +47,7 @@ function ImageUpload() {
         </div>
       )}
       {imgUrl && <img src={imgUrl} alt="uploaded file" height={200} />}
+      <Link to="/">Home</Link>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, push, onValue } from "firebase/database";
+import { Link } from "react-router-dom";
 // import "./App.css";
 function Begin() {
   const [message, setMessage] = useState("");
@@ -71,6 +72,7 @@ function Begin() {
       ) : (
         ""
       )}
+      <Link to="/image">Upload Image</Link>
     </div>
   );
 }
