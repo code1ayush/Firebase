@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, push, onValue, remove } from "firebase/database";
 import { Link } from "react-router-dom";
 // import "./App.css";
 function Begin() {
@@ -38,11 +38,16 @@ function Begin() {
     onValue(todoInDb, (snapshot) => {
       let arrayList = [];
       if (snapshot.val()) {
-        arrayList = Object.values(snapshot.val());
+        arrayList = Object.entries(snapshot.val());
       }
-      console.log(arrayList);
+      // console.log(arrayList);
       setData(arrayList);
     });
+  };
+  const removeData = (id) => {
+    let exactLocation = ref(dataBase, `toDOlIST/${id}`);
+    console.log(exactLocation);
+    remove(exactLocation);
   };
   return (
     <div className="Appp">
@@ -64,7 +69,12 @@ function Begin() {
           {data.map((employee) => {
             return (
               <div>
-                <h2>{employee}</h2>
+                <button
+                  style={{ border: "none", backgroundColor: "white" }}
+                  onClick={() => removeData(employee[0])}
+                >
+                  <p>{employee[1]}</p>
+                </button>
               </div>
             );
           })}
